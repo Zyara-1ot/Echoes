@@ -5,7 +5,7 @@
 #include <vector>    
 #include <algorithm> 
 #include "../include/utils/timer.h"
-#include "../include/measurements/cache_line.h"
+#include "../include/measurements/cache_size.h"
 #include "../include/measurements/false_sharing.h"
 
 int main(){

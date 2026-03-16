@@ -1,5 +1,5 @@
-#ifndef CACHE_LINE_H
-#define CACHE_LINE_H
+#ifndef CACHE_SIZE_H
+#define CACHE_SIZE_H
 #include <cstdint>   
 #include <vector>    
 
