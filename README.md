@@ -21,6 +21,14 @@ size: 16MB   cycles: 352   ← RAM
 ```
 *Tested on AMD Ryzen 5 5500U (L1: 32KB, L2: 512KB, L3: 8MB)*
 
+### Cache line size detection
+```
+stride: 1    cycles: 63
+stride: 32   cycles: 84
+stride: 64   cycles: 231   ← jump here = 64 byte cache line confirmed
+stride: 128  cycles: 273
+```
+
 ### False Sharing Detection
 ```
 with false sharing:    228,665,031 cycles
