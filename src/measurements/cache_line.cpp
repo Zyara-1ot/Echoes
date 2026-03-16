@@ -1,5 +1,5 @@
-#include "../include/cache_line.h"
-#include "../include/timer.h"
+#include "../include/measurements/cache_line.h"
+#include "../include/utils/timer.h"
 #include <iostream>
 #include <cstdint>   
 #include <cstdlib>  

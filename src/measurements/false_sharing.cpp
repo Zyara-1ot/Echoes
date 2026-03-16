@@ -1,5 +1,5 @@
-#include "../include/false_sharing.h"
-#include "../src/utils/timer.h"
+#include "../include/measurements/false_sharing.h"
+#include "../include/utils/timer.h"
 #include<iostream>
 #include<thread>
 #include <utility>

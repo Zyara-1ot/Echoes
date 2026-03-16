@@ -4,9 +4,9 @@
 #include <cstring>   
 #include <vector>    
 #include <algorithm> 
-#include "../src/utils/timer.h"
-#include "../include/cache_line.h"
-#include "../include/false_sharing.h"
+#include "../include/utils/timer.h"
+#include "../include/measurements/cache_line.h"
+#include "../include/measurements/false_sharing.h"
 
 int main(){
     std::size_t size = 10000000;
