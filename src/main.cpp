@@ -7,6 +7,7 @@
 #include "../include/utils/timer.h"
 #include "../include/measurements/cache_size.h"
 #include "../include/measurements/false_sharing.h"
+#include "../include/measurements/cache_line.h"
 
 int main(){
     std::size_t size = 10000000;
@@ -38,6 +39,14 @@ int main(){
     std::cout << "with false sharing:    " << result.first << " cycles" << std::endl;
     std::cout << "without false sharing: " << result.second << " cycles" << std::endl;
     std::cout << "penalty: " << (double)result.first / result.second << "x slower" << std::endl;
+
+    std::vector<uint64_t> line_results = detect_cache_line();
+    std::vector<uint64_t> strides = {1, 2, 4, 8, 16, 32, 64, 128, 256, 512};
+
+    std::cout << "\n Cache Line Size Detection " << std::endl;
+    for(int i = 0; i < line_results.size(); i++){
+        std::cout << "stride: " << strides[i] << " cycles: " << line_results[i] << std::endl;
+    }
 
 
     
