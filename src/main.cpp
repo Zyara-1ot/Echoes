@@ -58,7 +58,7 @@ int main(){
         std::cout << "size: " << sizes[i]/1024 << "KB cycles: " << tlb_res[i] << std::endl;
     }
 
-    std::cout << "\n--- Heatmap Sweep ---" << std::endl;
+    std::cout << "\n Heatmap Sweep " << std::endl;
     auto grid = heatmap_sweep();
     for(int i = 0; i < grid.size(); i++){
         std::cout << sizes[i]/1024 << "KB\t";
