@@ -1,6 +1,11 @@
 # ECHOES
 
-A tool that experimentally maps your CPU's cache hierarchy by stressing memory with different access patterns and visualizing latency and cache behavior.
+A tool that experimentally maps your CPU's cache hierarchy by 
+stressing memory with different access patterns and measuring 
+how long each access takes. Outputs a heatmap revealing L1, L2, 
+L3, and RAM boundaries, detects cache line size, TLB overflow 
+point, and false sharing penalties without touching a 
+spec sheet.
 
 ## What it measures
 
