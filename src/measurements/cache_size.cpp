@@ -8,7 +8,7 @@
 #include <algorithm>
 #include <random>
 
-std::vector<uint64_t> cache_line_size(){
+std::vector<uint64_t> cache_size(){
     std::vector<size_t> sizes = {4*1024,8*1024, 16*1024, 32*1024, 64*1024, 128*1024, 256*1024, 512*1024,768*1024,
         1*1024*1024,2*1024*1024, 3*1024*1024, 4*1024*1024,8*1024*1024, 16*1024*1024, 32*1024*1024, 64*1024*1024};
     std::vector<uint64_t> latency;
@@ -26,7 +26,7 @@ std::vector<uint64_t> cache_line_size(){
         arr[indices[k]] = indices[k+1];
     arr[indices[num_elem-1]] = indices[0];
     size_t idx = indices[0];
-    for(size_t k = 0; k < num_elem; k++)
+    for(size_t k = 0; k < num_elem; k++)      //warmup
         idx = arr[idx];
     idx = indices[0];
     for(int j = 0; j < 1000; j++){
