@@ -8,6 +8,10 @@
 #include "../include/measurements/cache_size.h"
 #include "../include/measurements/false_sharing.h"
 #include "../include/measurements/cache_line.h"
+#include "../include/measurements/tlb.h"
+#include "../include/measurements/heatmap_sweep.h"
+#include "../include/output/csv_writer.h"
+
 
 int main(){
     std::size_t size = 10000000;
@@ -28,7 +32,7 @@ int main(){
     }
     std::sort(tim.begin(), tim.end());
     //std::cout << tim[tim.size() / 2] << std::endl;
-    std::vector<uint64_t> res = cache_line_size();
+    std::vector<uint64_t> res = cache_size();
     std::vector<size_t> sizes = {4*1024,8*1024, 16*1024, 32*1024, 64*1024, 128*1024, 256*1024, 512*1024,768*1024,
         1*1024*1024,2*1024*1024, 3*1024*1024, 4*1024*1024,8*1024*1024, 16*1024*1024, 32*1024*1024, 64*1024*1024};
     for(int i = 0; i < res.size(); i++){
@@ -47,6 +51,27 @@ int main(){
     for(int i = 0; i < line_results.size(); i++){
         std::cout << "stride: " << strides[i] << " cycles: " << line_results[i] << std::endl;
     }
+
+    std::vector<uint64_t> tlb_res = detect_tlb();
+    std::cout << "tlb" << std::endl;
+    for(int i = 0; i < tlb_res.size(); i++){
+        std::cout << "size: " << sizes[i]/1024 << "KB cycles: " << tlb_res[i] << std::endl;
+    }
+
+    std::cout << "\n--- Heatmap Sweep ---" << std::endl;
+    auto grid = heatmap_sweep();
+    for(int i = 0; i < grid.size(); i++){
+        std::cout << sizes[i]/1024 << "KB\t";
+        for(int j = 0; j < grid[i].size(); j++){
+            std::cout << grid[i][j] << "\t";
+        }
+        std::cout << std::endl;
+    }
+    std::vector<size_t> h_sizes = {4*1024,8*1024,16*1024,32*1024,64*1024,128*1024,256*1024,512*1024,
+    1*1024*1024,2*1024*1024,4*1024*1024,8*1024*1024,16*1024*1024};
+    std::vector<size_t> h_strides = {1,2,4,8,16,32,64,128,256,512};
+    write_heatmap_csv("results/heatmap.csv", h_sizes, h_strides, grid);
+
 
 
     

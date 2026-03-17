@@ -3,6 +3,6 @@
 #include <cstdint>   
 #include <vector>    
 
-std::vector<uint64_t> cache_line_size();
+std::vector<uint64_t> cache_size();
 
 #endif
